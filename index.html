@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Feliz Dia do Psicólogo</title>
 
-  <!-- Fonte opcional (pode remover se quiser tudo local) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
@@ -14,8 +13,7 @@
       --card: #121528;
       --text: #e9ecf1;
       --muted: #b7bfd1;
-      --accent: #8a7dff; /* toque lilás/psicologia */
-      --accent-2: #5ce1e6;
+      --accent: #8a7dff;
       --shadow: 0 20px 60px rgba(0,0,0,.35);
       --radius: 16px;
     }
@@ -24,7 +22,7 @@
 
     body{
       margin: 0;
-      min-height: 100svh;
+      min-height: 100vh;
       display: grid;
       place-items: center;
       background:
@@ -32,14 +30,14 @@
         radial-gradient(1000px 700px at 110% 110%, rgba(92,225,230,.12), transparent 55%),
         var(--bg);
       color: var(--text);
-      font: 400 16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans", "Helvetica Neue", sans-serif;
+      font: 400 16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       padding: 24px;
     }
 
     .card{
       width: 100%;
       max-width: 720px;
-      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)) , var(--card);
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00)), var(--card);
       border: 1px solid rgba(255,255,255,.08);
       border-radius: var(--radius);
       padding: clamp(20px, 4vw, 40px);
@@ -48,81 +46,26 @@
     }
 
     h1{
-      margin: 0 0 8px;
+      margin: 0 0 20px;
       font-weight: 800;
-      letter-spacing: .3px;
       font-size: clamp(24px, 4.5vw, 36px);
       line-height: 1.2;
-      display: inline-flex;
-      align-items: center;
-      gap: .6rem;
       color: var(--text);
-    }
-
-    h1 .emoji{
-      font-size: 1.1em;
-      filter: drop-shadow(0 2px 6px rgba(138,125,255,.35));
-    }
-
-    .subtitle{
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: .98rem;
-    }
-
-    .divider{
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(138,125,255,.5), transparent);
-      margin: 18px 0 24px;
-      border-radius: 999px;
+      text-align: center;
     }
 
     .message{
       font-size: clamp(15px, 1.6vw, 18px);
       color: var(--text);
-      white-space: pre-line; /* respeita quebras se quiser colar texto */
+      white-space: pre-line;
     }
 
     .signature{
       margin-top: 22px;
       color: var(--muted);
       font-size: .95rem;
+      text-align: right;
     }
-
-    .heart{
-      display: inline-block;
-      transform: translateY(1px);
-      font-size: 1.05em;
-      background: linear-gradient(45deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      text-shadow: 0 4px 18px rgba(138,125,255,.25);
-    }
-
-    /* Botão de copiar (opcional) */
-    .actions{
-      margin-top: 18px;
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    button{
-      appearance: none;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      padding: 10px 14px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: transform .06s ease, background .2s ease, border-color .2s ease;
-    }
-    button:hover{
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.28);
-    }
-    button:active{ transform: scale(.98); }
 
     @media (prefers-color-scheme: light){
       :root{
@@ -137,13 +80,9 @@
   </style>
 </head>
 <body>
-
-  <main class="card" role="article" aria-label="Mensagem de homenagem">
-    <h1><span class="emoji">🧠</span> Feliz Dia do Psicólogo</h1>
-    <p class="subtitle">Uma homenagem com carinho</p>
-    <div class="divider" aria-hidden="true"></div>
-
-    <div id="texto" class="message">
+  <main class="card">
+    <h1>Feliz Dia do Psicólogo</h1>
+    <div class="message">
 Meus parabéns pelo seu dia, meu amor!
 Eu te amo demais, te admiro muito e tenho um orgulho enorme do seu esforço.
 Tenho certeza de que você será uma profissional incrível! Você é tudo pra mim.
@@ -151,33 +90,9 @@ Tenho certeza de que você será uma profissional incrível! Você é tudo pra m
 Quero também te pedir desculpas por ter te feito passar por momentos ruins nesses últimos dias.
 Fiquei realmente triste com tudo isso e sei que você também ficou chateada e desapontada comigo.
 Mas saiba que vou dar sempre o meu melhor para corrigir meus erros e ser a melhor pessoa para você,
-porque você merece todo o meu amor e dedicação. Te amo mais que tudo nesse mundo. <3
+porque você merece todo o meu amor e dedicação. Te amo mais que tudo nesse mundo.
     </div>
-
-    <div class="signature">Com todo o meu carinho, <span class="heart">♥</span></div>
-
-    <div class="actions">
-      <button type="button" onclick="copiar()">Copiar mensagem</button>
-      <button type="button" onclick="window.print()">Imprimir/Salvar em PDF</button>
-    </div>
+    <div class="signature">Com todo o meu carinho</div>
   </main>
-
-  <script>
-    function copiar(){
-      const texto = document.getElementById('texto').innerText.trim();
-      navigator.clipboard.writeText(texto).then(() => {
-        alert('Mensagem copiada!');
-      }).catch(() => {
-        // fallback simples
-        const ta = document.createElement('textarea');
-        ta.value = texto;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-        alert('Mensagem copiada!');
-      });
-    }
-  </script>
 </body>
 </html>
