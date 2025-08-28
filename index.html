@@ -13,10 +13,11 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
-      background: radial-gradient(circle at top, #ffdde1, #ee9ca7, #ff758c);
-      font-family: "Inter", sans-serif;
       padding: 20px;
+      font-family: "Inter", sans-serif;
+      background: radial-gradient(circle at top, #ffdde1, #ee9ca7, #ff758c);
+      overflow-y: auto;
+      position: relative;
     }
 
     .caixa{
@@ -29,6 +30,8 @@
       position: relative;
       box-shadow: 0 0 40px rgba(255, 0, 80, 0.4);
       animation: pulsar 3s infinite alternate;
+      margin: 40px 0;
+      z-index: 10;
     }
 
     h1{
@@ -48,6 +51,24 @@
       padding: 20px;
       border-radius: 16px;
       border: 2px dashed #ff4f70;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .mensagem-ocultada{
+      width: 60%;
+      max-width: 300px;
+      height: 60px;
+      background: #ffb6c1;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 12px;
+      margin: 0 auto 20px auto;
+      display: none;
     }
 
     .assinatura{
@@ -58,23 +79,69 @@
       font-family: "Great Vibes", cursive;
     }
 
-    .coracao{
+    .botao{
       position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 8px 12px;
+      background-color: #ff4f70;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 20;
+    }
+
+    .coracao, .foto{
+      position: absolute;
+      z-index: 5;
+    }
+
+    .coracao{
       font-size: 40px;
       color: #ff4f70;
       animation: flutuar 6s infinite;
     }
 
-    .coracao:nth-child(1){ top: -20px; left: 20%; animation-delay: 0s; }
-    .coracao:nth-child(2){ top: 30px; right: -10px; animation-delay: 1s; }
-    .coracao:nth-child(3){ bottom: -20px; left: 10%; animation-delay: 2s; }
-    .coracao:nth-child(4){ bottom: 30px; right: 15%; animation-delay: 3s; }
-    .coracao:nth-child(5){ top: 50%; left: -15px; animation-delay: 4s; }
+    .foto{
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 3px solid #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      animation: balancar 8s infinite ease-in-out;
+    }
+
+    .coracao, .foto{
+  opacity: 0.5; 
+}
+
+    /* Corações espalhados */
+    .coracao:nth-child(6){ top: 10%; left: 5%; animation-delay: 0s; }
+    .coracao:nth-child(7){ top: 20%; right: 10%; animation-delay: 1s; }
+    .coracao:nth-child(8){ bottom: 15%; left: 15%; animation-delay: 2s; }
+    .coracao:nth-child(9){ bottom: 10%; right: 5%; animation-delay: 3s; }
+    .coracao:nth-child(10){ top: 50%; left: 40%; animation-delay: 4s; }
+
+    /* Fotos espalhadas */
+    .foto:nth-child(11){ top: 15%; left: 10%; animation-delay: 0s; }
+    .foto:nth-child(12){ top: 25%; right: 15%; animation-delay: 1.5s; }
+    .foto:nth-child(13){ bottom: 20%; left: 20%; animation-delay: 3s; }
 
     @keyframes flutuar{
-      0% { transform: translateY(0) scale(1); opacity: 0.8; }
-      50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
-      100% { transform: translateY(0) scale(1); opacity: 0.8; }
+      0% { transform: translateY(0) scale(1);  }
+      50% { transform: translateY(-20px) scale(1.2) } 
+      100% { transform: translateY(0) scale(1);  }
+    }
+
+    @keyframes balancar{
+      0%   { transform: translateY(0) rotate(0deg); }
+      25%  { transform: translateY(-15px) rotate(-5deg); }
+      50%  { transform: translateY(0) rotate(5deg); }
+      75%  { transform: translateY(15px) rotate(-5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
     }
 
     @keyframes pulsar{
@@ -85,24 +152,56 @@
 </head>
 <body>
   <div class="caixa">
+    <button class="botao" onclick="toggleTexto()">Ocultar Texto</button>
+
+    <h1>Feliz Dia do Psicólogo</h1>
+
+    <!-- Texto real -->
+    <div class="mensagem" id="mensagem">
+Meus parabéns pelo seu dia, meu amor!
+Eu te amo demais, te admiro muito e tenho um orgulho enorme do seu esforço.
+Tenho certeza de que você será uma profissional incrível! Você é tudo pra mim.
+
+Quero também te pedir desculpas por ter te feito passar por momentos ruins nesses últimos dias.
+Fiquei realmente triste com tudo isso e sei que você também ficou chateada e desapontada comigo.
+Mas saiba que vou dar sempre o meu melhor para corrigir meus erros e ser a melhor pessoa para você,
+porque você merece todo o meu amor e dedicação. Te amo mais que tudo nesse mundo.
+    </div>
+
+    <!-- Quadrado que aparece quando ocultado -->
+    <div class="mensagem-ocultada" id="mensagemOcultada">Texto ocultado</div>
+
+    <div class="assinatura">Com todo o meu carinho ❤️</div>
+
+    <!-- Corações flutuantes -->
     <div class="coracao">❤️</div>
     <div class="coracao">💖</div>
     <div class="coracao">💘</div>
     <div class="coracao">💕</div>
     <div class="coracao">💞</div>
 
-    <h1>Feliz Dia do Psicólogo</h1>
-    <div class="mensagem">
-Meus parabéns pelo seu dia, meu amor!
-Eu te amo demais, te admiro muito e tenho um orgulho enorme do seu esforço.
-Tenho certeza de que você será uma profissional incrível! Você é tudo pra mim.
-
-Quero também te pedir desculpas por ter te feito passar por uns momentos ruins esses dias.
-Fiquei realmente triste com tudo isso e sei que você também ficou chateada e desapontada comigo.
-Mas saiba que vou dar sempre o meu melhor para corrigir meus erros e ser a melhor pessoa para você,
-porque você merece todo o meu amor e dedicação. Te amo mais que tudo nesse mundo.
-    </div>
-    <div class="assinatura">Com todo o meu carinho ❤️</div>
+    <!-- Fotos flutuantes -->
+    <img src="B62FD64C-DF84-41EE-A32D-FD9738D7342E.jpeg" alt="foto" class="foto">
+    <img src="IMG_7415.jpeg" alt="foto" class="foto">
+    <img src="IMG_7648.png" alt="foto" class="foto">
   </div>
+
+  <script>
+    const texto = document.getElementById('mensagem');
+    const ocultado = document.getElementById('mensagemOcultada');
+    const botao = document.querySelector('.botao');
+
+    function toggleTexto(){
+      if(texto.style.display !== 'none'){
+        texto.style.display = 'none';
+        ocultado.style.display = 'flex';
+        botao.textContent = 'Mostrar Texto';
+      } else {
+        texto.style.display = 'block';
+        ocultado.style.display = 'none';
+        botao.textContent = 'Ocultar Texto';
+      }
+    }
+  </script>
 </body>
 </html>
